@@ -1,3 +1,7 @@
+require 'JSON'
+require 'rest-client'
+require 'pry'
+
 class ReadingList
   def initialize
     # array to hold all of the users saved books
@@ -54,6 +58,7 @@ class GBooksAPI
   def initialize
     @url = "https://www.googleapis.com/books/v1/volumes?q="
   end
+  
 
 end
 
