@@ -50,10 +50,25 @@ class ReadingList
     results = @API.query_book(query)
     # binding.pry
     puts "Enter the number of the book you want to add to your list"
+
+    results.each_with_index { |book, i| print_book(book, i)}
+
   end
 
   def view_list
 
+  end
+
+  def print_book(book, i)
+    # binding.pry
+
+    puts "#{i+1}."
+    puts "\tTitle: #{book['volumeInfo']['title'] ? book['volumeInfo']['title'] : "N/A"}"
+    # puts "\tAuthor: #{book['volumeInfo']['authors'].first}"
+    puts "\tAuthor: #{book['volumeInfo']['authors'] ? book['volumeInfo']['authors'].first : "N/A"}"
+
+    # book['volumeInfo']['authors'] ? puts "\tAuthor: #{book['volumeInfo']['authors'].first}" : puts "\t Authors: N/A"
+    puts "\tPublishing Company: #{book['volumeInfo']['publisher'] ? book['volumeInfo']['publisher'] : "N/A"}"
   end
 
 end
