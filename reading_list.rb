@@ -48,5 +48,14 @@ class ReadingList
 
 end
 
+#API Class Handler
+class GBooksAPI
+
+  def initialize
+    @url = "https://www.googleapis.com/books/v1/volumes?q="
+  end
+
+end
+
 rlist = ReadingList.new
 rlist.run_app #starts the cli app
