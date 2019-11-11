@@ -68,7 +68,8 @@ class ReadingList
   end
 
   def view_list
-
+    puts "Your Reading List:"
+    @reading_list.each_with_index { |book, i| print_book(book, i)}
   end
 
   def print_book(book, i)
