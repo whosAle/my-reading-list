@@ -9,3 +9,6 @@ class ReadingList
   end
 
 end
+
+rlist = ReadingList.new
+rlist.run_app #starts the cli app
