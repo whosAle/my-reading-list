@@ -31,7 +31,7 @@ class ReadingList
 
   def view_add_exit    
     #top level menu that gives the user the option to add, view, or leave the app
-    puts "Please Enter: \n1 to add to library \n2 to view your Reading List\n3 or to Exit"
+    puts "Please Enter: \n1 to add to library \n2 to view your Reading List\n3 to Exit"
     input = gets.chomp.to_i
 
     #a validation to ensure correct input
