@@ -51,7 +51,19 @@ class ReadingList
     # binding.pry
     puts "Enter the number of the book you want to add to your list"
 
-    results.each_with_index { |book, i| print_book(book, i)}
+    results.each_with_index { |book, i| print_book(book, i) }
+
+    book_selection = nil
+    #validation
+    while !(1..5).include?(book_selection)
+      print "Please enter the number of book you want to add: "
+      book_selection = gets.chomp.to_i
+    end
+
+    # add book to reading list
+    @reading_list << results[book_selection-1]
+    
+    puts "#{results[book_selection-1]['volumeInfo']['title']} has been added to your Reading List"
 
   end
 
@@ -61,7 +73,6 @@ class ReadingList
 
   def print_book(book, i)
     # binding.pry
-
     puts "#{i+1}."
     puts "\tTitle: #{book['volumeInfo']['title'] ? book['volumeInfo']['title'] : "N/A"}"
     # puts "\tAuthor: #{book['volumeInfo']['authors'].first}"
@@ -81,6 +92,7 @@ class GBooksAPI
   end
   
   def query_book(query)
+    #returns the top 5 books based on the api response
     formatted_query = formatter(query)
     JSON.parse(RestClient.get(@url+formatted_query+@key))['items'][0..4] #returns the top 5 results
     # puts @url+formatted_query+@key
