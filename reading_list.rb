@@ -6,6 +6,7 @@ class ReadingList
   def initialize
     # array to hold all of the users saved books
     @reading_list = [] 
+    @API = GBooksAPI.new
   end
 
   def run_app
@@ -43,7 +44,12 @@ class ReadingList
   end
 
   def add_to_list
-    
+    print "Enter query to find book: "
+    query = gets.chomp
+
+    results = @API.query_book(query)
+    # binding.pry
+    puts "Enter the number of the book you want to add to your list"
   end
 
   def view_list
@@ -59,7 +65,7 @@ class GBooksAPI
     @url = "https://www.googleapis.com/books/v1/volumes?q="
   end
   
-  def query_GBooks(query)
+  def query_book(query)
     formatted_query = formatter(query)
     JSON.parse(RestClient.get(@url+formatted_query+@key))['items'][0..4] #returns the top 5 results
     # puts @url+formatted_query+@key
