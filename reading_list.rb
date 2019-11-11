@@ -10,6 +10,18 @@ class ReadingList
     
     mode = view_add_exit
 
+    while mode != 3
+      if mode == 1
+        add_to_list
+      elsif mode == 2
+        view_list
+      end
+
+      #updates mode to the user's desired path
+      mode = view_add_exit
+    end
+
+    puts "Closing app. Thanks for using."
   end
 
   def view_add_exit    
