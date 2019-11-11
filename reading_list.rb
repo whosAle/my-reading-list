@@ -38,6 +38,14 @@ class ReadingList
     input   
   end
 
+  def add_to_list
+    
+  end
+
+  def view_list
+
+  end
+
 end
 
 rlist = ReadingList.new
