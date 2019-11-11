@@ -59,7 +59,16 @@ class GBooksAPI
     @url = "https://www.googleapis.com/books/v1/volumes?q="
   end
   
+  def query_GBooks(query)
+    formatted_query = formatter(query)
+    JSON.parse(RestClient.get(@url+formatted_query+@key))['items'][0..4] #returns the top 5 results
+    # puts @url+formatted_query+@key
+  end
 
+  def formatter(query)
+    #replaces any spaces between words with a plus(+) to adhere to google's api requirements
+    query.gsub(/\s+/,"+")
+  end
 end
 
 rlist = ReadingList.new
