@@ -2,6 +2,8 @@ require 'JSON'
 require 'rest-client'
 require 'pry'
 
+require_relative 'env'
+
 class ReadingList
   def initialize
     # array to hold all of the users saved books
@@ -94,12 +96,13 @@ class GBooksAPI
 
   def initialize
     @url = "https://www.googleapis.com/books/v1/volumes?q="
+    @key_intro = "&key="
   end
   
   def query_book(query)
     #returns the top 5 books based on the api response
     formatted_query = formatter(query)
-    JSON.parse(RestClient.get(@url+formatted_query+@key))['items'][0..4] #returns the top 5 results
+    JSON.parse(RestClient.get(@url+formatted_query+@key_intro+KEY))['items'][0..4] #returns the top 5 results
     # puts @url+formatted_query+@key
   end
 
